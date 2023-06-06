@@ -35,9 +35,9 @@ def hook_code(uc, address, size, user_data):
     print('# Tracing instruction at 0x%x, instruction size = 0x%x, instruction = %s' % (address, size, instruction_str))
 
 
-emulator.uc.hook_add(UC_HOOK_CODE, hook_code)
+emulator.mu.hook_add(UC_HOOK_CODE, hook_code)
 
 # Runs a method of "libnative-lib.so" that calls an imported function "strlen" from "libc.so".
 emulator.call_symbol(lib_module, '_Z4testv')
 
-print("String length is: %i" % emulator.uc.reg_read(UC_ARM_REG_R0))
+print("String length is: %i" % emulator.mu.reg_read(UC_ARM_REG_R0))
