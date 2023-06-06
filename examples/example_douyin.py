@@ -132,7 +132,7 @@ for module in emulator.modules:
 
 # Debug
 # emulator.uc.hook_add(UC_HOOK_CODE, debug_utils.hook_code)
-emulator.uc.hook_add(UC_HOOK_MEM_UNMAPPED, debug_utils.hook_unmapped)
+emulator.mu.hook_add(UC_HOOK_MEM_UNMAPPED, debug_utils.hook_unmapped)
 # emulator.uc.hook_add(UC_HOOK_MEM_WRITE, debug_utils.hook_mem_write)
 # emulator.uc.hook_add(UC_HOOK_MEM_READ, debug_utils.hook_mem_read)
 
@@ -145,8 +145,8 @@ try:
     with open("./misc/app_process32", 'rb') as ap:
         data = ap.read()
         len1 = len(data) + 1024 - (len(data) % 1024)
-        emulator.uc.mem_map(0xab006000, len1)
-        emulator.uc.mem_write(0xab006000, data)
+        emulator.mu.mem_map(0xab006000, len1)
+        emulator.mu.mem_write(0xab006000, data)
 
     x = XGorgen()
     data = 'acde74a94e6b493a3399fac83c7c08b35D58B21D9582AF77647FC9902E36AE70f9c001e9334e6e94916682224fbe4e5f00000000000000000000000000000000'
